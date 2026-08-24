@@ -1,15 +1,23 @@
 // ============================================
-// ACTIVE NAV LINK — DESKTOP
+// ACTIVE STATE — BOTTOM NAV & DESKTOP NAV
 // ============================================
-const currentPage = window.location.pathname.split('/').pop() || 'index.html'
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html'
 
-document.querySelectorAll('.nav-links a').forEach(link => {
-    const linkPage = link.getAttribute('href')
-    if (linkPage === currentPage) {
-        link.classList.add('active-link')
-    }
+    // Desktop nav
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active-link')
+        }
+    })
+
+    // Bottom nav
+    document.querySelectorAll('.bottom-nav-item').forEach(item => {
+        if (item.getAttribute('href') === currentPage) {
+            item.classList.add('active')
+        }
+    })
 })
-
 // ============================================
 // ACTIVE STATE — BOTTOM NAV
 // ============================================
