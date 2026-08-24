@@ -204,7 +204,7 @@ img {
 }
 
 .bottom-nav-item.active i {
-    color: var(--primary);
+    color: var(--accent);
 }
 
 /* ========================
