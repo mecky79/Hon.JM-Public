@@ -200,11 +200,12 @@ img {
 }
 
 .bottom-nav-item.active {
-    color: var(--white);
+    color: var(--dark);
 }
 
 .bottom-nav-item.active i {
-    color: yellow;
+    color: var(--dark);
+    transform: translateY(-4px);
 }
 
 /* ========================
