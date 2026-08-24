@@ -2,14 +2,26 @@
 // ACTIVE STATE — BOTTOM NAV & DESKTOP NAV
 // ============================================
 function setActiveNav() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html'
+    let currentPage = window.location.pathname.split('/').pop() || 'index.html'
 
+    // Handle URLs without .html extension (Cloudflare Workers strips .html)
+    if (!currentPage.includes('.')) {
+        currentPage = currentPage + '.html'
+    }
+
+    // Handle root URL
+    if (currentPage === '.html' || currentPage === '') {
+        currentPage = 'index.html'
+    }
+
+    // Desktop nav
     document.querySelectorAll('.nav-links a').forEach(link => {
         if (link.getAttribute('href') === currentPage) {
             link.classList.add('active-link')
         }
     })
 
+    // Bottom nav
     document.querySelectorAll('.bottom-nav-item').forEach(item => {
         if (item.getAttribute('href') === currentPage) {
             item.classList.add('active')
@@ -17,7 +29,6 @@ function setActiveNav() {
     })
 }
 
-// Run immediately and also after DOM loads
 setActiveNav()
 document.addEventListener('DOMContentLoaded', setActiveNav)
 window.addEventListener('load', setActiveNav)
