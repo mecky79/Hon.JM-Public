@@ -1,32 +1,26 @@
 // ============================================
 // ACTIVE STATE — BOTTOM NAV & DESKTOP NAV
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+function setActiveNav() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html'
 
-    // Desktop nav
     document.querySelectorAll('.nav-links a').forEach(link => {
         if (link.getAttribute('href') === currentPage) {
             link.classList.add('active-link')
         }
     })
 
-    // Bottom nav
     document.querySelectorAll('.bottom-nav-item').forEach(item => {
         if (item.getAttribute('href') === currentPage) {
             item.classList.add('active')
         }
     })
-})
-// ============================================
-// ACTIVE STATE — BOTTOM NAV
-// ============================================
-document.querySelectorAll('.bottom-nav-item').forEach(item => {
-    const linkPage = item.getAttribute('href')
-    if (linkPage === currentPage) {
-        item.classList.add('active')
-    }
-})
+}
+
+// Run immediately and also after DOM loads
+setActiveNav()
+document.addEventListener('DOMContentLoaded', setActiveNav)
+window.addEventListener('load', setActiveNav)
 
 // ============================================
 // SCROLL — NAVBAR BACKGROUND CHANGE
