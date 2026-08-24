@@ -134,21 +134,166 @@ img {
     list-style: none;
 }
 
-@media (max-width: 768px) {
-    .nav-links {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease, padding 0.4s ease;
-        padding: 0 24px;
-    }
-
-    .nav-links.open {
-        max-height: 400px;
-        padding: 24px;
-    }
+/* ========================
+   MOBILE TOP BAR
+======================== */
+.mobile-top-bar {
+    display: none;
 }
 
+.mobile-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
 
+.mobile-cta-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* ========================
+   BOTTOM NAVIGATION
+======================== */
+.bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--primary);
+    padding: 8px 0;
+    z-index: 1000;
+    box-shadow: 0 -2px 20px rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+    flex: 1;
+    text-align: center;
+}
+
+.bottom-nav-item i {
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+}
+
+.bottom-nav-item:hover {
+    color: yellow;
+}
+
+.bottom-nav-item.active {
+    color: var(--primary);
+}
+
+.bottom-nav-item.active i {
+    color: var(--primary);
+}
+
+/* ========================
+   MOBILE RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+
+    /* Hide desktop navbar elements */
+    .nav-links {
+        display: none !important;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    /* Show mobile top bar */
+    .mobile-top-bar {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Show bottom nav as flex row */
+    .bottom-nav {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    /* Navbar becomes minimal top bar */
+    .navbar {
+        padding: 12px 20px;
+        justify-content: space-between;
+    }
+
+    /* Add bottom padding to body so content
+       doesn't hide behind the bottom nav */
+    body {
+        padding-bottom: 70px;
+    }
+
+    /* Page hero padding adjustment */
+    .page-hero {
+        padding: 100px 24px 60px;
+    }
+
+    .hero {
+        flex-direction: column;
+        padding: 90px 24px 60px;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        max-width: 100%;
+    }
+
+    .issues,
+    .register-prompt,
+    .about-content,
+    .manifesto-content,
+    .news-content,
+    .contact-content,
+    .register-content {
+        padding: 60px 24px;
+    }
+
+    .about-grid,
+    .contact-grid,
+    .register-grid,
+    .news-featured {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline::before {
+        left: 60px;
+    }
+
+    footer {
+        padding: 40px 24px;
+        margin-bottom: 0;
+    }
+}
 .nav-links a {
     color: var(--white);
     font-size: 1.23rem;
