@@ -200,7 +200,7 @@ img {
 }
 
 .bottom-nav-item.active {
-    color: var(--primary);
+    color: var(--white);
 }
 
 .bottom-nav-item.active i {
