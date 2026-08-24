@@ -292,6 +292,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/main.js"></script>
     <script src="js/register.js"></script>
-</body>
+    <script>
+    (function() {
+        const page = window.location.pathname.split('/').pop() || 'index.html'
+        document.querySelectorAll('.bottom-nav-item').forEach(function(item) {
+            if (item.getAttribute('href') === page) {
+                item.classList.add('active')
+            }
+        })
+    })()
+</script>
 </body>
 </html>
