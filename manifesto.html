@@ -180,5 +180,15 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+    (function() {
+        const page = window.location.pathname.split('/').pop() || 'index.html'
+        document.querySelectorAll('.bottom-nav-item').forEach(function(item) {
+            if (item.getAttribute('href') === page) {
+                item.classList.add('active')
+            }
+        })
+    })()
+</script>
 </body>
 </html>
