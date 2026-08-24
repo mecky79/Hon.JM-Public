@@ -1,34 +1,7 @@
 // ============================================
-// HAMBURGER MENU
+// ACTIVE NAV LINK — DESKTOP
 // ============================================
-const hamburger = document.querySelector('.hamburger')
-const navLinks = document.querySelector('.nav-links')
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open')
-    hamburger.textContent = navLinks.classList.contains('open') ? '✕' : '☰'
-})
-
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('open')
-        hamburger.textContent = '☰'
-    })
-})
-
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-        navLinks.classList.remove('open')
-        hamburger.textContent = '☰'
-    }
-})
-
-// ============================================
-// HIGHLIGHT ACTIVE NAV LINK
-// ============================================
-const currentPage = window.location.pathname.split('/').pop()
+const currentPage = window.location.pathname.split('/').pop() || 'index.html'
 
 document.querySelectorAll('.nav-links a').forEach(link => {
     const linkPage = link.getAttribute('href')
@@ -38,17 +11,29 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 })
 
 // ============================================
+// ACTIVE STATE — BOTTOM NAV
+// ============================================
+document.querySelectorAll('.bottom-nav-item').forEach(item => {
+    const linkPage = item.getAttribute('href')
+    if (linkPage === currentPage) {
+        item.classList.add('active')
+    }
+})
+
+// ============================================
 // SCROLL — NAVBAR BACKGROUND CHANGE
 // ============================================
 const navbar = document.querySelector('.navbar')
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled')
-    } else {
-        navbar.classList.remove('scrolled')
-    }
-})
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled')
+        } else {
+            navbar.classList.remove('scrolled')
+        }
+    })
+}
 
 // ============================================
 // SCROLL REVEAL ANIMATION
